@@ -1,11 +1,15 @@
+import requests
+import pandas as pd
 from bs4 import BeautifulSoup
 
-import requests
 
 url = "https://www.climatempo.com.br/"
 
-html = requests.get(url).content
+cntent = requests.get(url).content
 
-soup = BeautifulSoup(html, 'html5lib')
+site = BeautifulSoup(cntent, 'html.parser')
 
-print(soup.prettify())
+found = site.find("h1")
+
+# print(site.prettify())
+print(found)
